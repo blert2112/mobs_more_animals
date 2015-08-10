@@ -1,0 +1,15 @@
+**CODE**
+--------
+See Mobs.Redo license
+
+
+**MODELS/TEXTURES**
+-------------------
+unknown
+
+Created by: Nathan S.
+
+
+**SOUNDS**
+----------
+See Mobs.Redo license
