@@ -6,10 +6,9 @@ See Mobs.Redo license
 **MODELS/TEXTURES**
 -------------------
 unknown
-
-Created by: Nathan S.
+Artist/origin: Nathan S.
 
 
 **SOUNDS**
 ----------
-See Mobs.Redo license
+Not applicable.

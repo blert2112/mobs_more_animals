@@ -32,21 +32,26 @@ if mobs.mod and mobs.mod == "redo" then
 		jump_chance = 5,
 		drops = {
 			{name = "mobs:meat_raw", chance = 1, min = 1, max = 2},
-			--{name = "mobs:leather", chance = 1, min = 1, max = 3}
+			{name = "mobs:leather", chance = 1, min = 1, max = 3}
 		},
 		follow = "farming:wheat",
 		replace_rate = 50,
 		replace_what = {"default:grass_3", "default:grass_4", "default:grass_5", "farming:wheat_8"},
 		replace_with = "air",
 		on_rightclick = function(self, clicker)
-			if mobs:feed_tame(self, clicker, 10, true) then
+			if mobs:feed_tame(self, clicker, 8, true) then
 				return
 			end
 			mobs:capture_mob(self, clicker, 0, 0, 80, false, nil)
 		end
 	})
 
-	local l_spawn_elevation_min = minetest.setting_get("water_level") + 1 or 1
+	local l_spawn_elevation_min = minetest.setting_get("water_level")
+	if l_spawn_elevation_min then
+		l_spawn_elevation_min = l_spawn_elevation_min + 1
+	else
+		l_spawn_elevation_min = 1
+	end
 	--name, nodes, neighbors, min_light, max_light, interval, chance, active_object_count, min_height, max_height
 	mobs:spawn_specific("mobs_deer:deer",
 		{"default:dirt_with_grass", "ethereal:green_dirt_top"},

@@ -50,7 +50,12 @@ if mobs.mod and mobs.mod == "redo" then
 		end
 	})
 
-	local l_spawn_elevation_min = minetest.setting_get("water_level") - 5 or 1
+	local l_spawn_elevation_min = minetest.setting_get("water_level")
+	if l_spawn_elevation_min then
+		l_spawn_elevation_min = l_spawn_elevation_min - 5
+	else
+		l_spawn_elevation_min = -5
+	end
 	--name, nodes, neighbors, min_light, max_light, interval, chance, active_object_count, min_height, max_height
 	mobs:spawn_specific("mobs_wolf:wolf",
 		{"default:dirt_with_grass", "default:dirt","default:snow", "default:snowblock", "ethereal:green_dirt_top"},
@@ -96,13 +101,6 @@ if mobs.mod and mobs.mod == "redo" then
 		follow = "mobs:raw_meat",
 		on_rightclick = function(self, clicker)
 			if mobs:feed_tame(self, clicker, 6, true) then
-				local hp = self.object:get_hp()
-				if hp + 4 > self.hp_max then
-					hp = self.hp_max
-				else
-					hp = hp + 4
-				end
-				self.object:set_hp(hp)
 				return
 			end
 			if clicker:get_wielded_item():is_empty() and clicker:get_player_name() == self.owner then

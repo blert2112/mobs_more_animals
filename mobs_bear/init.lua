@@ -32,9 +32,11 @@ if mobs.mod and mobs.mod == "redo" then
 		jump = false,
 		drops = {
 			{name = "mobs:meat_raw", chance = 1, min = 1, max = 2},
-			--{name = "mobs:leather", chance = 1, min = 1, max = 2}			
+			{name = "mobs:leather", chance = 1, min = 1, max = 2}			
 		},
-		follow = "mobs:honey",
+		follow = {"mobs:honey", "farming:raspberries", "farming:blueberries", "farming_plus:strawberry_item",
+			"bushes:strawberry", "bushes:blackberry", "bushes:blueberry", "bushes:raspberry",
+			"bushes:gooseberry", "bushes:mixed_berry"},
 		replace_rate = 50,
 		replace_what = {"mobs:beehive", "farming:blueberry_4", "farming:raspberry_4", "farming_plus:strawberry",
 			"bushes:strawberry_bush", "bushes:blackberry_bush", "bushes:blueberry_bush", "bushes:raspberry_bush",
@@ -42,13 +44,6 @@ if mobs.mod and mobs.mod == "redo" then
 		replace_with = "air",
 		on_rightclick = function(self, clicker)
 			if mobs:feed_tame(self, clicker, 10, true) then
-				local hp = self.object:get_hp()
-				if hp + 4 > self.hp_max then
-					hp = self.hp_max
-				else
-					hp = hp + 4
-				end
-				self.object:set_hp(hp)
 				return
 			end
 			if clicker:get_wielded_item():is_empty() and clicker:get_player_name() == self.owner then
@@ -68,7 +63,12 @@ if mobs.mod and mobs.mod == "redo" then
 		end
 	})
 
-	local l_spawn_elevation_min = minetest.setting_get("water_level") - 10 or 1
+	local l_spawn_elevation_min = minetest.setting_get("water_level")
+	if l_spawn_elevation_min then
+		l_spawn_elevation_min = l_spawn_elevation_min - 10
+	else
+		l_spawn_elevation_min = -10
+	end
 	--name, nodes, neighbors, min_light, max_light, interval, chance, active_object_count, min_height, max_height
 	mobs:spawn_specific("mobs_bear:medved",
 		{"default:dirt_with_grass", "default:dirt", "default:desert_sand", "ethereal:green_dirt_top"},
