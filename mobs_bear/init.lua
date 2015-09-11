@@ -59,7 +59,9 @@ if mobs.mod and mobs.mod == "redo" then
 						self.state = "walk"
 					end
 				end
+				return
 			end
+			mobs:capture_mob(self, clicker, 0, 0, 80, false, nil)
 		end
 	})
 
