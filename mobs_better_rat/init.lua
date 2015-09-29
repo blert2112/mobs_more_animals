@@ -1,7 +1,7 @@
 
 if mobs.mod and mobs.mod == "redo" then
 
--- bear
+-- better rat
 	mobs:register_mob("mobs_better_rat:rat", {
 		type = "animal",
 		visual = "mesh",
@@ -23,6 +23,7 @@ if mobs.mod and mobs.mod == "redo" then
 		lava_damage = 5,
 		fall_damage = 0,
 		damage = 1,
+		reach = 1,
 		attack_type = "dogfight",
 		group_attack = true,
 		drops = {

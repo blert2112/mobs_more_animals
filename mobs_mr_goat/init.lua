@@ -34,6 +34,7 @@ if mobs.mod and mobs.mod == "redo" then
 		lava_damage = 7,
 		fall_damage = 7,
 		damage = 2,
+		reach = 2,
 		attack_type = "dogfight",
 		view_range = 7,
 		stepheight = 1.1,

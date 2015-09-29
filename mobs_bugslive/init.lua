@@ -25,6 +25,7 @@ if mobs.mod and mobs.mod == "redo" then
 		lava_damage = 1,
 		fall_damage = 0,
 		damage = 1,
+		reach = 1,
 		attack_type = "dogfight",
 		group_attack = true,
 		view_range = 3,

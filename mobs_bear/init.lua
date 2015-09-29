@@ -25,6 +25,7 @@ if mobs.mod and mobs.mod == "redo" then
 		lava_damage = 10,
 		fall_damage = 5,
 		damage = 10,
+		reach = 3,
 		attack_type = "dogfight",
 		attacks_monsters = true,
 		view_range = 14,
@@ -75,7 +76,7 @@ if mobs.mod and mobs.mod == "redo" then
 	mobs:spawn_specific("mobs_bear:medved",
 		{"default:dirt_with_grass", "default:dirt", "default:desert_sand", "ethereal:green_dirt_top"},
 		{"air"},
-		0, 20, 30, 20000, 1, l_spawn_elevation_min, 31000
+		0, 20, 30, 30000, 1, l_spawn_elevation_min, 31000
 	)
 	mobs:register_egg("mobs_bear:medved", "Bear", "wool_brown.png", 1)
 
