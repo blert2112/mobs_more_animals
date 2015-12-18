@@ -42,7 +42,6 @@ minetest.register_node("mobs_snowman:tophat", {
 	description = "Top Hat",
 	tiles = {"default_coal_block.png"},
 	groups = {snappy=2,choppy=2,oddly_breakable_by_hand=3,flammable=3,wool=1},
-	sounds = default_stone_sounds,
 	paramtype = "light",
 	drawtype = "nodebox",
 	node_box = {
