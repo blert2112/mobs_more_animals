@@ -4,41 +4,103 @@ if mobs.mod and mobs.mod == "redo" then
 -- better rat
 	mobs:register_mob("mobs_better_rat:rat", {
 		type = "animal",
+		--lifetimer = 180,
+
 		visual = "mesh",
+		--visual_size = {x=1, y=1},
 		mesh = "rat.b3d",
+		--gotten_mesh = "rat.b3d",
 		rotate = 180,
+		collisionbox = {-0.1, -0.01, -0.1, 0.1, 0.1, 0.1},
+		--animation = { 
+		--	speed_normal = 0,	speed_run = 0,
+		--	stand_start = 0,	stand_end = 0,
+		--	walk_start = 0,		walk_end = 0,
+		--	run_start = 0,		run_end = 0,
+		--	punch_start = 0,	punch_end = 0,
+		--	punch2_start = 0,	punch2_end = 0,
+		--	shoot_start = 0,	shoot_end = 0,
+		--	speed_punch = 0,	speed_punch2 = 0,	speed_shoot = 0
+		--},
 		textures = {
 			{"rat_black.png"},
 			{"rat_brown.png"},
 			{"rat_gray.png"},
 			{"rat_white.png"}
 		},
-		collisionbox = {-0.2, -0.01, -0.2, 0.2, 0.2, 0.2},
+		--gotten_texture = {{"mobs_medved.png"}},
+		--child_texture = {{"mobs_medved.png"}},
+
+		--stepheight = 0.6,
+		--fear_height = 0,
+		runaway = true,
+		--jump = false,
+		--jump_chance = 0,
+		jump_height = 3,
+		fly = false,
+		--fly_in = "air",
+		walk_chance = 60,
+		walk_velocity = 2,
+		run_velocity = 4,
+		--fall_speed = -10,
+		--floats = 1,
+
+		view_range = 8,
+		follow = {"mobs:cheese", "mobs_mr_goat:goatcheese"},
+
+		passive = true,
+		attack_type = "dogfight",
+		damage = 1,
+		reach = 1,
+		--docile_by_day = false,
+		--attacks_monsters = false,
+		pathfinding = false,
+		--double_melee_attack = false,
+		group_attack = true,
+		--explosion_radius = 1,
+		--arrow = "ent:name",
+		--shoot_interval = 1,
+		--shoot_offset = 0,
+		--dogshoot_switch = 1,
+		--dogshoot_count_max = 5,
+
 		hp_min= 2,
 		hp_max = 5,
 		armor = 80,
-		knock_back = 2,
-		blood_amount = 1,
-		water_damage = 1,
-		lava_damage = 5,
+		--knock_back = 3,
+		lava_damage = 2,
 		fall_damage = 0,
-		damage = 1,
-		reach = 1,
-		attack_type = "dogfight",
-		group_attack = true,
+		water_damage = 1,
+		--light_damage = 0,
+		recovery_time = 0.25,
+		--immune_to = {},
+		blood_amount = 1,
+		--blood_texture = "mobs_blood.png",
+
+		--makes_footstep_sound = false,
+		--sounds = {},
+
 		drops = {
 			{name = "mobs:cheese", chance = 1, min = 1, max = 2},
 		},
-		follow = {"mobs:cheese", "mobs_mr_goat:goatcheese"},
-		replace_rate = 50,
+
 		replace_what = {"mobs:cheese", "mobs:cheeseblock", "mobs_mr_goat:goatcheese", "mobs_mr_goat:goatcheeseblock"},
 		replace_with = "air",
-		view_range = 8,
-		stepheight = 1.1,
-		jump = false,
+		replace_rate = 50,
+		--replace_offset = 0,	
+
+		--do_custom = function(self, dtime)
+			--end
+		--custom_attack = function(self, to_attack)
+			--end,
+		--on_blast = funtion(object, damage)
+				--return do_damage, do_knockback, drops
+			--end,
+		--on_die = function(self, pos)
+			--end,
 		on_rightclick = function(self, clicker)
-			mobs:capture_mob(self, clicker, 25, 80, 0, true, nil)
-		end
+				mobs:capture_mob(self, clicker, 25, 80, 0, true, nil)
+			end
 	})
 
 	--name, nodes, neighbors, min_light, max_light, interval, chance, active_object_count, min_height, max_height

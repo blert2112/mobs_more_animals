@@ -1,2 +1,2 @@
-default
 mobs
+mobs_mr_goat?
