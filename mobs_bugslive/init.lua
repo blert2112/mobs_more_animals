@@ -93,7 +93,7 @@ if mobs.mod and mobs.mod == "redo" then
 			"farming:pumpkin_8"
 		},
 		replace_with = "air",
-		replace_rate = 50,
+		replace_rate = 10,
 		--replace_offset = 0,
 
 		do_custom = function(self, dtime)

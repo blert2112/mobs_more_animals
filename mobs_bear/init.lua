@@ -88,10 +88,11 @@ if mobs.mod and mobs.mod == "redo" then
 
 		replace_what = {
 			"mobs:beehive",
+			"mobs_bugslive:bug",
 			"farming:blueberry_4", "farming:raspberry_4"
 		},
 		replace_with = "air",
-		replace_rate = 50,
+		replace_rate = 20,
 		--replace_offset = 0,	
 
 		--do_custom = function(self, dtime)

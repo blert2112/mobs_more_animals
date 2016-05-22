@@ -92,7 +92,7 @@ if mobs.mod and mobs.mod == "redo" then
 			"farming:wheat_5", "farming:wheat_6", "farming:wheat_7", "farming:wheat_8"
 		},
 		replace_with = "air",
-		replace_rate = 50,
+		replace_rate = 10,
 		--replace_offset = 0,	
 
 		--do_custom = function(self, dtime)
