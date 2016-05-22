@@ -36,7 +36,7 @@ if mobs.mod and mobs.mod == "redo" then
 		runaway = true,
 		--jump = false,
 		--jump_chance = 0,
-		jump_height = 3,
+		jump_height = 2,
 		fly = false,
 		--fly_in = "air",
 		walk_chance = 60,
