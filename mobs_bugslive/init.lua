@@ -104,7 +104,7 @@ if mobs.mod and mobs.mod == "redo" then
 						self.floats = 0
 					end
 				end
-			end
+			end,
 		--custom_attack = function(self, to_attack)
 			--end,
 		--on_blast = funtion(object, damage)
