@@ -28,8 +28,8 @@ if mobs.mod and mobs.mod == "redo" then
 			{"rat_gray.png"},
 			{"rat_white.png"}
 		},
-		--gotten_texture = {{"mobs_medved.png"}},
-		--child_texture = {{"mobs_medved.png"}},
+		--gotten_texture = {{}},
+		--child_texture = {{}},
 
 		--stepheight = 0.6,
 		--fear_height = 0,
