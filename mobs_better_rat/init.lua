@@ -9,7 +9,7 @@ if mobs.mod and mobs.mod == "redo" then
 		visual = "mesh",
 		--visual_size = {x=1, y=1},
 		mesh = "rat.b3d",
-		--gotten_mesh = "rat.b3d",
+		--gotten_mesh = "",
 		rotate = 180,
 		collisionbox = {-0.1, -0.01, -0.1, 0.1, 0.1, 0.1},
 		--animation = { 
@@ -84,7 +84,13 @@ if mobs.mod and mobs.mod == "redo" then
 			{name = "mobs:cheese", chance = 1, min = 1, max = 2},
 		},
 
-		replace_what = {"mobs:cheese", "mobs:cheeseblock", "mobs_mr_goat:goatcheese", "mobs_mr_goat:goatcheeseblock"},
+		replace_what = {
+			"mobs:cheese", "mobs:cheeseblock",
+			"mobs_mr_goat:goatcheese", "mobs_mr_goat:goatcheeseblock",
+			"farming:barley_5", "farming:barley_6", "farming:barley_7",
+			"farming_corn_7.png", "farming_corn_8.png",
+			"farming:wheat_5", "farming:wheat_6", "farming:wheat_7", "farming:wheat_8"
+		},
 		replace_with = "air",
 		replace_rate = 50,
 		--replace_offset = 0,	
