@@ -7,7 +7,7 @@ if mobs.mod and mobs.mod == "redo" then
 		--lifetimer = 180,
 
 		visual = "mesh",
-		--visual_size = {x=1, y=1},
+		visual_size = {x=0.5, y=0.5},
 		mesh = "bug.x",
 		--gotten_mesh = "",
 		--rotate = 0,
