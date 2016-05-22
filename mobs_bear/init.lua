@@ -42,18 +42,18 @@ if mobs.mod and mobs.mod == "redo" then
 		run_velocity = 3,
 		--fall_speed = -10,
 		--floats = 1,
-		
+
 		view_range = 12,
 		follow = {
 			"mobs:honey",
 			"farming:blueberries", "farming:raspberries"
 		},
-		
+
 		passive = true,
 		attack_type = "dogfight",
 		damage = 10,
 		reach = 3,
-		docile_by_day = false,
+		--docile_by_day = false,
 		attacks_monsters = true,
 		pathfinding = true,
 		--double_melee_attack = false,
@@ -64,10 +64,10 @@ if mobs.mod and mobs.mod == "redo" then
 		--shoot_offset = 0,
 		--dogshoot_switch = 1,
 		--dogshoot_count_max = 5,
-		
+
 		hp_min = 10,
 		hp_max = 25,
-		armor = 2,
+		armor = 100,
 		knock_back = 1,
 		lava_damage = 10,
 		fall_damage = 5,
@@ -80,7 +80,7 @@ if mobs.mod and mobs.mod == "redo" then
 
 		makes_footstep_sound = true,
 		--sounds = {},
-		
+
 		drops = {
 			{name="mobs:meat_raw", chance=1, min=1, max=2},
 			{name="mobs:leather", chance=1, min=1, max=2}			
