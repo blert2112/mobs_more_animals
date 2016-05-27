@@ -4,73 +4,129 @@ if mobs.mod and mobs.mod == "redo" then
 -- mr.goat
 	mobs:register_mob("mobs_mr_goat:goat", {
 		type = "animal",
+		--lifetimer = 180,
+
 		visual = "mesh",
-		mesh = "mobs_goat.b3d",
-		textures = {
-			{"mobs_goat_white.png"},
-			{"mobs_goat_brown.png"},
-			{"mobs_goat_grey.png"},
-		},
 		visual_size = {x=2,y=2},
+		mesh = "mobs_goat.b3d",
+		--gotten_mesh = "",
+		--rotate = 0,
 		collisionbox = {-0.3, -0.01, -0.3, 0.3, 0.75, 0.3},
 		animation = {
+			-- 1-30 head down, 31-60 head up, 61-121 tail wiggle, 185-215 lay down,
+			-- 216-245 getting up, 331-390 chewing, 391-511 look around
 			speed_normal = 15,		speed_run = 24,
 			stand_start = 1,		stand_end = 121,
 			walk_start = 122,		walk_end = 182,
 			run_start = 122,		run_end = 182,
 			punch_start = 246,		punch_end = 330,
-			-- 1-30 head down, 31-60 head up, 61-121 tail wiggle, 185-215 lay down,
-			-- 216-245 getting up, 331-390 chewing, 391-511 look around
+			--punch2_start = 70,	punch2_end = 100,
+			--shoot_start = 0,	shoot_end = 0,
+			--speed_punch = 0,	speed_punch2 = 0,	speed_shoot = 0
 		},
-		makes_footstep_sound = true,
-		sounds = {
-			random = "mobs_sheep",
+		textures = {
+			{"mobs_goat_white.png"},
+			{"mobs_goat_brown.png"},
+			{"mobs_goat_grey.png"},
 		},
+		--gotten_texture = {},
+		--child_texture = {},
+
+		stepheight = 0.6,
+		fear_height = 4,
+		--jump = true,
+		jump_chance = 5,
+		jump_height = 4,
+		fly = false,
+		--fly_in = "air",
+		walk_chance = 60,
+		--walk_velocity = 1,
+		--run_velocity = 2,
+		--fall_speed = -10,
+		--floats = 1,
+
+		view_range = 7,
+		follow = {
+			"farming:straw"
+		},
+
+		passive = true,
+		attack_type = "dogfight",
+		damage = 3,
+		reach = 2,
+		--docile_by_day = false,
+		--attacks_monsters = false,
+		pathfinding = false,
+		runaway = false,
+		--double_melee_attack = false,
+		--group_attack = false,
+		--explosion_radius = 1,
+		--arrow = "ent:name",
+		--shoot_interval = 1,
+		--shoot_offset = 0,
+		--dogshoot_switch = 1,
+		--dogshoot_count_max = 5,
+
 		hp_min = 6,
 		hp_max = 12,
 		armor = 200,
 		knock_back = 1,
-		water_damage = 1,
 		lava_damage = 7,
 		fall_damage = 7,
-		damage = 2,
-		reach = 2,
-		attack_type = "dogfight",
-		view_range = 7,
-		stepheight = 1.1,
-		jump_chance = 5,
+		water_damage = 1,
+		--light_damage = 0,
+		recovery_time = 0.25,
+		--immune_to = {},
+		--blood_amount = 5,
+		--blood_texture = "mobs_blood.png",
+
+		makes_footstep_sound = true,
+		sounds = {
+			random = "mobs_sheep",
+		},
+
 		drops = {
 			{name = "mobs:meat_raw", chance = 1, min = 1, max = 2},
 			{name = "mobs:leather", chance = 1, min = 1, max = 2}
 		},
-		follow = {"farming:wheat", "group:flora"},
-		replace_rate = 50,
-		replace_what = {"group:flora"},
+
+		replace_what = {"default:grass_3", "default:grass_4", "default:grass_5",},
 		replace_with = "air",
+		replace_rate = 50,
+		--replace_offset = 0,
+
+		--do_custom = function(self, dtime)
+			--end
+		--custom_attack = function(self, to_attack)
+			--end,
+		--on_blast = funtion(object, damage)
+				--return do_damage, do_knockback, drops
+			--end,
+		--on_die = function(self, pos)
+			--end,
 		on_rightclick = function(self, clicker)
-			if  mobs:feed_tame(self, clicker, 8, true) then
-				return
-			end
-			local tool = clicker:get_wielded_item()
-			if tool:get_name() == "bucket:bucket_empty" then
-				if self.gotten == true
-				or self.child == true then
+				if  mobs:feed_tame(self, clicker, 8, true, true) then
 					return
 				end
-				local inv = clicker:get_inventory()
-				inv:remove_item("main", "bucket:bucket_empty")
-				if inv:room_for_item("main", {name = "mobs_mr_goat:bucket_goatmilk"}) then
-					clicker:get_inventory():add_item("main", "mobs_mr_goat:bucket_goatmilk")
-				else
-					local pos = self.object:getpos()
-					pos.y = pos.y + 0.5
-					minetest.add_item(pos, {name = "mobs_mr_goat:bucket_goatmilk"})
+				local tool = clicker:get_wielded_item()
+				if tool:get_name() == "bucket:bucket_empty" then
+					if self.gotten == true or self.child == true then
+						return
+					end
+					local inv = clicker:get_inventory()
+					inv:remove_item("main", "bucket:bucket_empty")
+					if inv:room_for_item("main", {name = "mobs_mr_goat:bucket_goatmilk"}) then
+						clicker:get_inventory():add_item("main", "mobs_mr_goat:bucket_goatmilk")
+					else
+						local pos = self.object:getpos()
+						pos.y = pos.y + 0.5
+						minetest.add_item(pos, {name = "mobs_mr_goat:bucket_goatmilk"})
+					end
+					self.gotten = true -- milked
+					return
 				end
-				self.gotten = true -- milked
-				return
+				mobs:capture_mob(self, clicker, 0, 0, 60, false, nil)
 			end
-			mobs:capture_mob(self, clicker, 0, 0, 60, false, nil)
-		end
 	})
 
 	local l_spawn_elevation_min = minetest.setting_get("water_level")
