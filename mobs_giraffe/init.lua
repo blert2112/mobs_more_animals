@@ -84,7 +84,7 @@ if mobs.mod and mobs.mod == "redo" then
 			{name = "mobs:leather", chance = 1, min = 1, max = 4}
 		},
 
-		replace_what = {"group:leaves"},
+		replace_what = {"default:leaves"},
 		replace_with = "air",
 		replace_rate = 20,
 		--replace_offset = 0,
