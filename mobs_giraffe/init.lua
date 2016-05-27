@@ -42,7 +42,7 @@ if mobs.mod and mobs.mod == "redo" then
 		--floats = 1,
 
 		view_range = 16,
-		follow = {"group:leaves"},
+		follow = {"default:leaves"},
 
 		passive = true,
 		attack_type = "dogfight",
