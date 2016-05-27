@@ -177,17 +177,16 @@ core.register_entity("mobs_snowman:snowball", {
 	automatic_rotate = false,
 	
 	timer = 20,
-	lastpos = {x=0, y=0, z=0},
 
 	on_step = function(self, dtime)
+		local pos = self.object:getpos()
+
 		self.timer = self.timer - dtime
 		if self.timer < 0 then
-			core.add_item(self.lastpos, "default:snow")
+			core.add_item(pos, "default:snow")
 			self.object:remove()
 			return self
 		end
-				
-		local pos = self.object:getpos()
 
 		local node = core.get_node_or_nil(pos)
 		if node and node.name ~= "" and node.name ~= "default:snow" then
@@ -217,7 +216,6 @@ core.register_entity("mobs_snowman:snowball", {
 				end
 			end
 		end
-		self.lastpos = {x=pos.x, y=pos.y, z=pos.z}
 		return self
 	end
 })
