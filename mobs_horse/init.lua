@@ -108,32 +108,30 @@ if mobs.mod and mobs.mod == "redo" then
 				if not clicker or not clicker:is_player() then
 					return
 				end
-
 				if mobs:feed_tame(self, clicker, 10, true, true) then
 					return
 				end
-
 				if self.tamed and self.owner == clicker:get_player_name() then
 					local inv = clicker:get_inventory()
 					if self.driver and clicker == self.driver then
 						-- detach
+						self.object:set_properties({textures = self.base_texture, stepheight = 0.6})
 						lib_mount.detach(self, clicker, {x=1, y=0, z=1})
 						if inv:room_for_item("main", "mobs:saddle") then
 							inv:add_item("main", "mobs:saddle")
 						else
 							minetest.add_item(clicker.getpos(), "mobs:saddle")
 						end
-						self.object:set_properties({stepheight = 0.6})
 					elseif not self.driver then
 						-- attach
 						if clicker:get_wielded_item():get_name() == "mobs:saddle" then
+							local tex = string.split(self.base_texture[1], ".")
+							self.object:set_properties({textures = {tex[1].."h1."..tex[2]}, stepheight = 1.1})
 							lib_mount.attach(self, clicker, {x=0, y=20, z=-2}, {x=0, y=3, z=0})
 							inv:remove_item("main", "mobs:saddle")
-							self.object:set_properties({stepheight = 1.1})
 						end
 					end
 				end
-
 				mobs:capture_mob(self, clicker, 0, 0, 80, false, nil)
 			end
 	})
@@ -151,7 +149,7 @@ if mobs.mod and mobs.mod == "redo" then
 		{"air"},
 		8, 20, 30, 11000, 1, l_spawn_elevation_min, 31000
 	)
-	mobs:register_egg("mobs_horse:horse", "Horse", "mobs_horse_inv.png", 1)
+	mobs:register_egg("mobs_horse:horse", "Horse", "mobs_horse_inv.png", 0)
 
 	-- saddle
 	minetest.register_craftitem(":mobs:saddle", {
