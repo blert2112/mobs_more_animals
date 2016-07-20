@@ -92,7 +92,7 @@ if mobs.mod and mobs.mod == "redo" then
 
 		do_custom = function(self, dtime)
 				if self.driver then
-					lib_mount.drive(self, dtime, "walk", "stand", false)
+					lib_mount.drive(self, dtime, "walk", "stand", 1, false)
 					return false
 				end
 				return true
