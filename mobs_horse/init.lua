@@ -92,7 +92,7 @@ if mobs.mod and mobs.mod == "redo" then
 
 		do_custom = function(self, dtime)
 				if self.driver then
-					lib_mount.drive(self, dtime, "walk", "stand", 1, false)
+					lib_mount.drive(self, dtime, true, "walk", "stand", 1, false)
 					return false
 				end
 				return true
@@ -116,7 +116,7 @@ if mobs.mod and mobs.mod == "redo" then
 					if self.driver and clicker == self.driver then
 						-- detach
 						self.object:set_properties({textures = self.base_texture, stepheight = 0.6})
-						lib_mount.detach(self, clicker, {x=1, y=0, z=1})
+						lib_mount.detach(clicker, {x=1, y=0, z=1})
 						if inv:room_for_item("main", "mobs:saddle") then
 							inv:add_item("main", "mobs:saddle")
 						else
