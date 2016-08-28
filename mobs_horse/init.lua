@@ -100,6 +100,8 @@ if mobs.mod and mobs.mod == "redo" then
 					self.braking = 6
 					self.turn_spd = 6
 					self.terrain_type = 3
+					self.driver_attach_at = {x=0, y=20, z=-2}
+					self.driver_eye_offset = {x=0, y=3, z=0}
 				end
 				if self.driver then
 					lib_mount.drive(self, dtime, true, "walk", "stand", 1, false)
@@ -137,7 +139,7 @@ if mobs.mod and mobs.mod == "redo" then
 						if clicker:get_wielded_item():get_name() == "mobs:saddle" then
 							local tex = string.split(self.base_texture[1], ".")
 							self.object:set_properties({textures = {tex[1].."h1."..tex[2]}, stepheight = 1.1})
-							lib_mount.attach(self, clicker, {x=0, y=20, z=-2}, {x=0, y=3, z=0})
+							lib_mount.attach(self, clicker, false)
 							inv:remove_item("main", "mobs:saddle")
 						end
 					end
