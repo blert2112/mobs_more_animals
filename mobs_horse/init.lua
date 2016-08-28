@@ -91,6 +91,16 @@ if mobs.mod and mobs.mod == "redo" then
 		--replace_offset = 0,	
 
 		do_custom = function(self, dtime)
+				--set needed value if not already present
+				if not self.v2 then
+					self.v2 = 0
+					self.max_speed_forward = 6
+					self.max_speed_reverse = 5
+					self.accel = 6
+					self.braking = 6
+					self.turn_spd = 6
+					self.terrain_type = 3
+				end
 				if self.driver then
 					lib_mount.drive(self, dtime, true, "walk", "stand", 1, false)
 					return false
